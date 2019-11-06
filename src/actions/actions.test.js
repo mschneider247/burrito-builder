@@ -10,4 +10,14 @@ describe('Actions tests', () => {
     const result = actions.setOrders(orders);
     expect(result).toEqual(expected);
   })
+
+  it('Should create a placeOrder action with .type PLACE_ORDER', () => {
+    const order = [{ name: 'Penny', ingredients: ['bacon'] }];
+    const expected = {
+      type: 'PLACE_ORDER',
+      order,
+    };
+    const result = actions.placeOrder(order);
+    expect(result).toEqual(expected);
+  })
 })

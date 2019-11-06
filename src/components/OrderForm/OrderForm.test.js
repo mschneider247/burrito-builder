@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OrderForm } from './OrderForm'
+import { OrderForm, mapDispatchToProps } from './OrderForm'
+import { placeOrder } from '../../actions';
 
 describe('OrderForm component', () => {
   const wrapper = shallow(<OrderForm/>)
@@ -22,3 +23,14 @@ describe('OrderForm component', () => {
     expect(wrapper.state()).toEqual(expectedState)
   })
 })
+
+describe('OrderForm mapDispatchToProps', () => {
+
+  it('Should dispatch a new order when placeOrder is called', () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = placeOrder([{name: 'Harry', ingredients: ['veggies']}]);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.placeOrder([{name: 'Harry', ingredients: ['veggies']}]);
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  });
+});
