@@ -21,6 +21,9 @@ class OrderForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    if (this.state.ingredients.length === 0) {
+      return
+    }
     this.clearInputs();
   }
 
