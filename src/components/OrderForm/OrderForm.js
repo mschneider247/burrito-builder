@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { postOrder } from '../../apiCalls'
 
 class OrderForm extends Component {
   constructor(props) {
@@ -19,11 +20,20 @@ class OrderForm extends Component {
     this.setState({ingredients: [...this.state.ingredients, e.target.name]});
   }
 
+  postOrder = () => {
+    const order = {
+      name: this.state.name,
+      ingredients: this.state.ingredients
+    }
+    postOrder(order);
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.ingredients.length === 0) {
       return
     }
+    this.postOrder();
     this.clearInputs();
   }
 
