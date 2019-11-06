@@ -4,7 +4,6 @@ export const getOrders = () => {
 }
 
 export const postOrder = (order) => {
-  console.log("POST ORDER BEING CALLED")
   const options = {
     method: 'POST',
     body: JSON.stringify(order),
@@ -12,4 +11,5 @@ export const postOrder = (order) => {
   }
   return fetch('http://localhost:3001/api/v1/orders', options)
     .then(response => response.json())
+    .catch(console.log("Order submission failed"))
 }
