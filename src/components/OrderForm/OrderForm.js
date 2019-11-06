@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { postOrder } from '../../apiCalls'
+import { postOrder } from '../../apiCalls';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { placeOrder } from '../../actions';
 
-class OrderForm extends Component {
+export class OrderForm extends Component {
   constructor(props) {
     super();
     this.props = props;
@@ -26,6 +29,7 @@ class OrderForm extends Component {
       ingredients: this.state.ingredients
     }
     postOrder(order);
+    this.props.placeOrder(order);
   }
 
   handleSubmit = e => {
@@ -73,4 +77,10 @@ class OrderForm extends Component {
   }
 }
 
-export default OrderForm;
+export const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    placeOrder,
+  }, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(OrderForm);

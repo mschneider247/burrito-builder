@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import OrderForm from './OrderForm'
+import { OrderForm } from './OrderForm'
 
 describe('OrderForm component', () => {
   const wrapper = shallow(<OrderForm/>)
