@@ -12,4 +12,10 @@ describe('Orders reducer', () => {
     const result = orders([], mockAction);
     expect(result).toEqual(['1', '2', '3']);
   });
+
+  it('should return action.order when type is PLACE_ORDER', () => {
+    const mockAction = { type: 'PlACE_ORDER', order: {} };
+    const result = orders([{}], mockAction);
+    expect(result).toEqual([{}]);
+  });
 });
