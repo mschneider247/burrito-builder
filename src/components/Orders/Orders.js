@@ -3,7 +3,7 @@ import { Component } from 'react';
 import './Orders.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setOrders } from '../../actions';
+import { setOrders, removeOrder } from '../../actions';
 import { getOrders } from '../../apiCalls'
 
 export class Orders extends Component {
@@ -12,6 +12,11 @@ export class Orders extends Component {
     getOrders()
       .then(data => this.props.setOrders(data.orders))
       .catch(err => console.error('Error fetching:', err));
+  }
+
+  removeOrder = (index) => {
+    this.props.removeOrder(index)
+    // deleteOrder(??)
   }
 
   orderEls = () => this.props.orders.map((order, index) => {
@@ -23,6 +28,7 @@ export class Orders extends Component {
             return <li key={index}>{ingredient}</li>
           })}
         </ul>
+        <button onClick={() => this.removeOrder(index)}>Order Finished! DELETE</button>
       </div>
     )
   });
@@ -45,6 +51,7 @@ export const mapStateToProps = ({ orders }) => ({
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     setOrders,
+    removeOrder,
   }, dispatch)
 );
 
