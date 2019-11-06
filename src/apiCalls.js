@@ -4,6 +4,7 @@ export const getOrders = () => {
 }
 
 export const postOrder = (order) => {
+  console.log("POST ORDER BEING CALLED")
   const options = {
     method: 'POST',
     body: JSON.stringify(order),
