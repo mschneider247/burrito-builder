@@ -16,7 +16,7 @@ export class Orders extends Component {
 
   removeOrder = (index) => {
     this.props.removeOrder(index)
-    // deleteOrder(??)
+    // api delete call
   }
 
   orderEls = () => this.props.orders.map((order, index) => {
