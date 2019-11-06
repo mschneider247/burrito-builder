@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Orders container Should match its snapshot 1`] = `
+<section>
+  <p>
+    No orders yet!
+  </p>
+</section>
+`;
